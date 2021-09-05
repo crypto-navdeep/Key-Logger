@@ -1,0 +1,1 @@
+All the keystrokes will be saved in this folder in form of text files
