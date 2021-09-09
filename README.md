@@ -1,4 +1,4 @@
 # Key-Logger
 Key Logger which runs in background.
 
-Please run `requirements.txt`.
+Please run `pip install requirements.txt`.
