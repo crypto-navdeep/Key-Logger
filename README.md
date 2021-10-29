@@ -43,7 +43,9 @@ Notice the file `data.json`, when you'll open it, you find something like this..
 ```
 Basically, it is the amount of time in seconds for saving a txt file in `Files` after one-another, for example the basic time is 5 minutes in seconds, so after every 300 seconds, the keylogger will save a txt file in `Files`, these very individual text file contain all the keystrokes
 
-### Usage
+---
+
+## Usage and License
 
 This Key-logger repository is licensed under "MIT License", so you are free to use it but the owner(s) is/are not responsible for any lose which might happens so. 
 
@@ -51,8 +53,7 @@ Moreover this keylogger is prepared by an Amateur, so should not be entirely tru
 
 Thank you
 
-### Contributors
+## Contributors
 
-Navdeep (Owner)
-
-Ved Rathi (Contributor)
+- [Navdeep](https://github.com/crypto-navdeep/) (Owner)
+- [Ved Rathi](https://github.com/Ved-programmer) (Contributor)
