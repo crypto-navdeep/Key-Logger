@@ -49,6 +49,9 @@ This Key-logger repository is licensed under "MIT License", so you are free to u
 
 Moreover this keylogger is prepared by an Amateur, so should not be entirely trusted, this repository serves like a prototype if you were to make a real keylogger for spying purposes whatever so.
 
->Thank you
+Thank you
 
->Navdeep
+### Contributors
+
+Navdeep (Owner)
+Ved Rathi (Contributor)
